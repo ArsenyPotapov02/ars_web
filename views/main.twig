@@ -1,0 +1,30 @@
+{% extends "__content.twig" %}
+
+{% block content %}
+    <h1>{{header}}</h1>
+    <hr>
+    <table class="table" style="margin-top: 30px;">
+    <thead>
+        <tr>
+            {% for col in column_name %}
+                <th scope="col">{{col}}</th>
+            {% endfor %}
+            {{col|raw}}
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in objects %}
+            <tr>
+                {% for i in 0..count %}
+                    <td>{{object[i]}}</td>
+                {% endfor %}
+                {% if role == 'admin'%}
+                {{row1|raw}}{{object[0]}}{{row2|raw}}{{object[0]}}{{row3|raw}}{{table}}{{row4|raw}}
+                {% endif %}
+            </tr>
+        {% endfor %}                           
+        
+    </tbody>
+    </table>
+    {{nav|raw}}  
+{% endblock %}

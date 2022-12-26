@@ -1,0 +1,41 @@
+{% extends "__layout.twig" %}
+
+{% block layout %}
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="\"><i class="fa-solid fa-warehouse "></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="\">Главная</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Таблица
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% for table in tables %}
+                <li><a class="dropdown-item" href="/?table={{table.0}}">{{table.1}}</a></li>
+              {% endfor %}             
+            </ul>
+          </li>
+          {{add_dropdown|raw}}
+        </ul>
+        <form action="/search" class="d-flex">
+          <input name="search" class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Поиск</button>
+        </form>
+        <form action="/logout" style="margin-left: 10px;">
+          <button class="btn btn-light btn-block" type="submit">Выйти</button>
+      </form>
+      </div>
+    </div>
+  </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}    
+    </div> 
+{% endblock %}

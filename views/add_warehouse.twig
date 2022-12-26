@@ -1,0 +1,24 @@
+{% extends "__content.twig" %}
+
+{% block content %}
+<section class = "addnew" style="border: solid; border-radius: 2rem; margin-top: 15px; padding: 15px;">
+    <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
+        <div class="col-3">
+            <label class="form-label">Номер склада</label>
+            <input type="text" class="form-control" name="warehouse_number" value="{{objects[0]}}">
+        </div>
+        <div class="col-3">
+            <label class="form-label">ФИО кладовщика</label>
+            <input class="form-control" type="text" name="storekeeper_name" value="{{objects[1]}}">
+        </div>
+        <div class="col-3">
+            <label class="form-label">Пароль</label>
+            <input class="form-control" type="text" name="password" value="{{objects[2]}}">
+        </div>
+        
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+    </form>
+</section>
+{% endblock %}
